@@ -13,13 +13,13 @@
             <img src="images/logo.jpg" alt="Логотип" class="header__logo-img"> АНТИКАФЕ "КУБ"
         </div>
         <nav class="header__nav">
-            <a href="#" class="header__nav-link">Меню</a>
-            <a href="#" class="header__nav-link">Правила</a>
-            <a href="#" class="header__nav-link">Залы</a>
-            <a href="#" class="header__nav-link">Аренда</a>
-            <a href="#" class="header__nav-link">Контакты</a>
+            <a href="#advantages" class="header__nav-link">Правила</a>
+            <a href="#halls" class="header__nav-link">Залы</a>
+            <a href="#catalog" class="header__nav-link">Развлечения</a>
+            <a href="#contact" class="header__nav-link">Бронь</a>
+            <a href="#contacts" class="header__nav-link">Контакты</a>
         </nav>
-        <button class="header__button">Забронировать</button>
+        <button class="header__button" onclick="document.getElementById('contact').scrollIntoView();">Забронировать</button>
     </header>
 
     <main class="main">
@@ -33,13 +33,13 @@
                     Плати только за время, проведённое с пользой.
                 </p>
                 <div class="hero__buttons">
-                    <button class="hero__button hero__button--primary">Забронировать визит</button>
-                    <button class="hero__button hero__button--outline">Наши залы</button>
+                    <button class="hero__button hero__button--primary" onclick="document.getElementById('contact').scrollIntoView();">Забронировать визит</button>
+                    <button class="hero__button hero__button--outline" onclick="document.getElementById('halls').scrollIntoView();">Наши залы</button>
                 </div>
             </div>
         </section>
 
-        <section class="advantages">
+        <section class="advantages" id="advantages">
             <h2 class="advantages__title">Почему выбирают нас?</h2>
             <div class="advantages__grid">
                 <div class="advantages__item"><img src="images/adv-1.jpg" alt="Зал" class="advantages__image"></div>
@@ -49,7 +49,7 @@
             </div>
         </section>
 
-        <section class="feature">
+        <section class="feature" id="halls">
             <div class="feature__content">
                 <h2 class="feature__title">Аренда залов для ваших мероприятий</h2>
                 <p class="feature__text">Дни рождения, вечеринки, квизы и встречи. У нас есть вместительные залы и аппаратура для презентаций.</p>
@@ -82,7 +82,8 @@
             </ul>
         </section>
 
-        <section class="catalog">
+
+        <section class="catalog" id="catalog">
             <h2 class="catalog__title">Наши развлечения</h2>
             <div class="catalog__grid">
                 
@@ -141,7 +142,7 @@
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-party.jpg" alt="Дни рождения" class="catalog__card-image">
+                    <img src="images/cat-party.jpg" alt="Праздники" class="catalog__card-image">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">Праздники</h3>
                         <p class="catalog__card-text">Отмечайте дни рождения и вечеринки у нас. Поможем с украшением и организацией.</p>
@@ -160,7 +161,7 @@
             </div>
         </section>
 
-        <section class="contact">
+        <section class="contact" id="contact">
             <h2 class="contact__title">Ответьте на несколько вопросов и забронируйте место</h2>
             <form class="contact__form">
                 <fieldset class="contact__fieldset">
@@ -204,7 +205,7 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="contacts">
         <div class="footer__logo">
             <img src="images/logo.jpg" alt="Логотип" class="footer__logo-img"> Антикафе "КУБ"
         </div>
