@@ -11,7 +11,7 @@
     --modal-bg: rgba(0, 0, 0, 0.85);
 }
 
-/* Светлая тема - Реально белая */
+/* Светлая тема */
 body.light-theme {
     --bg-dark: #ffffff;
     --bg-section: #f4f4f4;
@@ -23,7 +23,6 @@ body.light-theme {
     --modal-bg: rgba(255, 255, 255, 0.9);
 }
 
-/* Сброс стилей */
 * {
     margin: 0;
     padding: 0;
@@ -42,11 +41,12 @@ body {
     transition: background-color var(--transition), color var(--transition);
 }
 
-/* Шапка */
+/* Шапка (Исправление прыжков) */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap; /* Запрещаем перенос элементов */
     padding: 20px 40px;
     background-color: #000;
     border-bottom: 2px solid var(--accent);
@@ -68,6 +68,7 @@ body.light-theme .header {
     font-weight: 900;
     text-transform: uppercase;
     color: var(--text-main);
+    flex-shrink: 0;
 }
 
 .header__logo-img {
@@ -83,6 +84,7 @@ body.light-theme .header {
     gap: 20px;
     flex: 1;
     justify-content: center;
+    min-width: 0;
 }
 
 .header__nav-link {
@@ -90,6 +92,7 @@ body.light-theme .header {
     text-decoration: none;
     font-size: 14px;
     text-transform: uppercase;
+    white-space: nowrap; /* Текст не переносится */
     transition: color var(--transition), transform var(--transition);
 }
 
@@ -102,6 +105,8 @@ body.light-theme .header {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
+    margin-left: 20px;
 }
 
 .theme-toggle--header {
@@ -150,6 +155,22 @@ body.light-theme .theme-toggle--header {
 }
 .burger--active .burger__line:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Дополнительная адаптация для экранов 769-1100px, чтобы меню не прыгало */
+@media (max-width: 1100px) and (min-width: 769px) {
+    .header {
+        padding: 15px 20px;
+    }
+    .header__logo {
+        font-size: 20px;
+    }
+    .header__nav {
+        gap: 10px;
+    }
+    .header__nav-link {
+        font-size: 12px;
+    }
 }
 
 /* Hero */
@@ -340,7 +361,7 @@ body.light-theme .theme-toggle--header {
     transform: scale(1.05);
 }
 
-/* FAQ (Аккордеон) */
+/* FAQ (Аккордеон с плавным и быстрым движением) */
 .faq {
     padding: 60px 40px;
     text-align: center;
@@ -375,15 +396,22 @@ body.light-theme .theme-toggle--header {
 
 .faq__question:hover { color: var(--accent); }
 
+/* Закрытие - быстрое (0.25 сек) */
 .faq__answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease;
+    opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.25s ease, padding 0.25s ease;
+    padding: 0;
     color: var(--text-secondary);
 }
 
+/* Открытие - плавное (0.6 сек) */
 .faq__item--active .faq__answer {
-    max-height: 500px;
+    max-height: 1000px; 
+    opacity: 1;
+    padding: 10px 0 20px 0;
+    transition: max-height 0.6s ease, opacity 0.6s ease, padding 0.6s ease;
 }
 
 /* Contact */
@@ -487,8 +515,6 @@ body.light-theme .footer {
     cursor: pointer;
 }
 
-/* ВАЖНОЕ ИСПРАВЛЕНИЕ: Применяем стили только к ПРЯМЫМ потомкам (главным фото),
-   чтобы не задевать миниатюры внутри галереи */
 .modal__content > img {
     width: 100%;
     height: 300px;
@@ -524,12 +550,11 @@ body.light-theme .footer {
     line-height: 1.7;
 }
 
-/* Стили для галереи (миниатюры) */
 .gallery-thumbnails {
     display: flex;
     gap: 10px;
     justify-content: center;
-    flex-wrap: wrap; /* Добавил перенос, если не влезают */
+    flex-wrap: wrap;
     margin-top: 20px;
 }
 
@@ -552,7 +577,6 @@ body.light-theme .footer {
     border-color: var(--accent);
 }
 
-/* Форма в модальном окне */
 .form-fieldset { border: none; margin-bottom: 20px; }
 .form-legend { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: var(--text-main); }
 .form-group { display: flex; gap: 15px; margin-bottom: 10px; }
@@ -560,7 +584,6 @@ body.light-theme .footer {
 .form-submit { background-color: var(--accent); color: white; border: none; padding: 15px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; transition: background var(--transition); }
 .form-submit:hover { background-color: var(--accent-light); }
 
-/* Кнопка Наверх */
 .to-top {
     position: fixed;
     bottom: 20px;
@@ -620,6 +643,12 @@ body.light-theme .footer {
         display: flex;
         transform: translateY(0);
         opacity: 1;
+        align-items: flex-start;
+    }
+    
+    .header__nav-link {
+        text-align: left;
+        width: 100%;
     }
 
     .hero {
@@ -638,7 +667,6 @@ body.light-theme .footer {
     .catalog__grid { grid-template-columns: 1fr; }
     .footer { flex-direction: column; gap: 20px; text-align: center; }
     
-    /* Адаптация миниатюр на мобильных */
     .gallery-thumbnails {
         flex-wrap: wrap;
     }
