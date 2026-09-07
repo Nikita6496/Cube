@@ -12,14 +12,22 @@
         <div class="header__logo">
             <img src="images/logo.jpg" alt="Логотип" class="header__logo-img"> АНТИКАФЕ "КУБ"
         </div>
+        
         <nav class="header__nav">
-            <a href="#advantages" class="header__nav-link">Правила</a>
             <a href="#halls" class="header__nav-link">Залы</a>
             <a href="#catalog" class="header__nav-link">Развлечения</a>
+            <a href="#faq" class="header__nav-link">FAQ</a>
             <a href="#contact" class="header__nav-link">Бронь</a>
-            <a href="#contacts" class="header__nav-link">Контакты</a>
         </nav>
-        <button class="header__button" onclick="document.getElementById('contact').scrollIntoView();">Забронировать</button>
+
+        <div class="header__controls">
+            <button class="theme-toggle theme-toggle--header" id="theme-toggle">🌙</button>
+            <button class="burger" id="burger" aria-label="Открыть меню">
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+            </button>
+        </div>
     </header>
 
     <main class="main">
@@ -33,8 +41,8 @@
                     Плати только за время, проведённое с пользой.
                 </p>
                 <div class="hero__buttons">
-                    <button class="hero__button hero__button--primary" onclick="document.getElementById('contact').scrollIntoView();">Забронировать визит</button>
-                    <button class="hero__button hero__button--outline" onclick="document.getElementById('halls').scrollIntoView();">Наши залы</button>
+                    <button class="hero__button hero__button--primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Забронировать визит</button>
+                    <button class="hero__button hero__button--outline" onclick="document.getElementById('halls').scrollIntoView({behavior:'smooth'});">Наши залы</button>
                 </div>
             </div>
         </section>
@@ -42,10 +50,18 @@
         <section class="advantages" id="advantages">
             <h2 class="advantages__title">Почему выбирают нас?</h2>
             <div class="advantages__grid">
-                <div class="advantages__item"><img src="images/adv-1.jpg" alt="Зал" class="advantages__image"></div>
-                <div class="advantages__item"><img src="images/adv-2.jpg" alt="Игры" class="advantages__image"></div>
-                <div class="advantages__item"><img src="images/adv-3.jpg" alt="Кофе" class="advantages__image"></div>
-                <div class="advantages__item"><img src="images/adv-4.jpg" alt="Отдых" class="advantages__image"></div>
+                <div class="advantages__item" data-title="Уютная атмосфера" data-desc="Мягкие диваны, приглушенный свет и уютные зоны для общения." data-img="images/adv-1.jpg">
+                    <img src="images/adv-1.jpg" alt="Зал" class="advantages__image">
+                </div>
+                <div class="advantages__item" data-title="Игровая зона" data-desc="Более 100 настольных игр и современные консоли." data-img="images/adv-2.jpg">
+                    <img src="images/adv-2.jpg" alt="Игры" class="advantages__image">
+                </div>
+                <div class="advantages__item" data-title="Напитки включены" data-desc="Безлимитный кофе, чай и какао входят в стоимость." data-img="images/adv-3.jpg">
+                    <img src="images/adv-3.jpg" alt="Кофе" class="advantages__image">
+                </div>
+                <div class="advantages__item" data-title="Комфорт и свобода" data-desc="Платите только за время, проведенное с пользой." data-img="images/adv-4.jpg">
+                    <img src="images/adv-4.jpg" alt="Отдых" class="advantages__image">
+                </div>
             </div>
         </section>
 
@@ -53,7 +69,7 @@
             <div class="feature__content">
                 <h2 class="feature__title">Аренда залов для ваших мероприятий</h2>
                 <p class="feature__text">Дни рождения, вечеринки, квизы и встречи. У нас есть вместительные залы и аппаратура для презентаций.</p>
-                <button class="feature__button">Выбрать зал</button>
+                <button class="feature__button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Выбрать зал</button>
             </div>
             <div class="feature__grid">
                 <div class="feature__item"><img src="images/hall-1.jpg" alt="Зал 1"></div>
@@ -64,144 +80,129 @@
         <section class="portfolio">
             <h2 class="portfolio__title">Как проходит наш день</h2>
             <div class="portfolio__grid">
-                <div class="portfolio__item"><img src="images/day-1.jpg" alt="Фото 1"></div>
-                <div class="portfolio__item"><img src="images/day-2.jpg" alt="Фото 2"></div>
-                <div class="portfolio__item"><img src="images/day-3.jpg" alt="Фото 3"></div>
-                <div class="portfolio__item"><img src="images/day-4.jpg" alt="Фото 4"></div>
+                <div class="portfolio__item" data-title="Встречи" data-desc="Идеальное место для встреч с друзьями и коллегами." data-img="images/day-1.jpg">
+                    <img src="images/day-1.jpg" alt="Фото 1">
+                </div>
+                <div class="portfolio__item" data-title="Общение" data-desc="Живое общение и новые знакомства каждый день." data-img="images/day-2.jpg">
+                    <img src="images/day-2.jpg" alt="Фото 2">
+                </div>
+                <div class="portfolio__item" data-title="Настольные игры" data-desc="Турниры и совместные игры поднимают настроение." data-img="images/day-3.jpg">
+                    <img src="images/day-3.jpg" alt="Фото 3">
+                </div>
+                <div class="portfolio__item" data-title="Работа и учёба" data-desc="Удобные рабочие места с розетками и быстрым Wi-Fi." data-img="images/day-4.jpg">
+                    <img src="images/day-4.jpg" alt="Фото 4">
+                </div>
             </div>
         </section>
-
-        <section class="benefits">
-            <h2 class="benefits__title">Что можно делать у нас?</h2>
-            <h3 class="benefits__subtitle">Мы — не просто кафе, это место свободы</h3>
-            <ul class="benefits__list">
-                <li class="benefits__list-item">Играть в настольные и видеоигры</li>
-                <li class="benefits__list-item">Работать за ноутбуком с быстрым Wi-Fi</li>
-                <li class="benefits__list-item">Смотреть кино на большом экране</li>
-                <li class="benefits__list-item">Устраивать настольные турниры и квизы</li>
-            </ul>
-        </section>
-
 
         <section class="catalog" id="catalog">
             <h2 class="catalog__title">Наши развлечения</h2>
             <div class="catalog__grid">
                 
                 <article class="catalog__card">
-                    <img src="images/cat-ps.jpg" alt="PS5" class="catalog__card-image">
+                    <img src="images/cat-ps.jpg" alt="PS5" class="catalog__card-image" data-gallery="images/cat-ps.jpg|images/hero-bg.jpg|images/day-1.jpg" data-title="PlayStation 5" data-desc="Свежие игры, гонки, футбол. Отличное времяпрепровождение вдвоём или с друзьями.">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">PlayStation 5</h3>
                         <p class="catalog__card-text">Свежие игры, гонки, футбол. Отличное времяпрепровождение вдвоём или с друзьями.</p>
-                        <button class="catalog__card-button">Играть</button>
+                        <button class="catalog__card-button" data-gallery-open>Играть</button>
                     </div>
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-board.jpg" alt="Настольные игры" class="catalog__card-image">
+                    <img src="images/cat-board.jpg" alt="Настольные игры" class="catalog__card-image" data-gallery="images/cat-board.jpg|images/day-3.jpg|images/hero-bg.jpg" data-title="Настольные игры" data-desc="Более 100 игр: от Манчкина до Мафии. Администратор всегда поможет выбрать!">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">Настольные игры</h3>
                         <p class="catalog__card-text">Более 100 игр: от Манчкина до Мафии. Администратор всегда поможет выбрать!</p>
-                        <button class="catalog__card-button">Выбрать игру</button>
+                        <button class="catalog__card-button" data-gallery-open>Выбрать игру</button>
                     </div>
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-cinema.jpg" alt="Кино" class="catalog__card-image">
+                    <img src="images/cat-cinema.jpg" alt="Кино" class="catalog__card-image" data-gallery="images/cat-cinema.jpg|images/day-2.jpg|images/hero-bg.jpg" data-title="Кинозал" data-desc="Большой экран, проектор и мягкие кресла. Идеально для просмотра фильмов и сериалов.">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">Кинозал</h3>
                         <p class="catalog__card-text">Большой экран, проектор и мягкие кресла. Идеально для просмотра фильмов и сериалов.</p>
-                        <button class="catalog__card-button">Смотреть</button>
+                        <button class="catalog__card-button" data-gallery-open>Смотреть</button>
                     </div>
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-vr.jpg" alt="VR" class="catalog__card-image">
+                    <img src="images/cat-vr.jpg" alt="VR" class="catalog__card-image" data-gallery="images/cat-vr.jpg|images/day-1.jpg|images/hero-bg.jpg" data-title="VR-зона" data-desc="Погрузись в виртуальную реальность! Шлемы и игры для любого возраста.">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">VR-зона</h3>
                         <p class="catalog__card-text">Погрузись в виртуальную реальность! Шлемы и игры для любого возраста.</p>
-                        <button class="catalog__card-button">Попробовать</button>
+                        <button class="catalog__card-button" data-gallery-open>Попробовать</button>
                     </div>
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-art.jpg" alt="Творчество" class="catalog__card-image">
+                    <img src="images/cat-art.jpg" alt="Творчество" class="catalog__card-image" data-gallery="images/cat-art.jpg|images/day-4.jpg|images/hero-bg.jpg" data-title="Творческий уголок" data-desc="Краски, мел, настольные игры. У нас можно рисовать и проявлять креатив.">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">Творческий уголок</h3>
                         <p class="catalog__card-text">Краски, мел, настольные игры. У нас можно рисовать и проявлять креатив.</p>
-                        <button class="catalog__card-button">Творить</button>
+                        <button class="catalog__card-button" data-gallery-open>Творить</button>
                     </div>
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-coffee.jpg" alt="Кофе" class="catalog__card-image">
+                    <img src="images/cat-coffee.jpg" alt="Кофе" class="catalog__card-image" data-gallery="images/cat-coffee.jpg|images/adv-3.jpg|images/hero-bg.jpg" data-title="Безлимитный кофе" data-desc="Ароматный кофе, какао и чай включены в стоимость. Заварите свежую чашку!">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">Безлимитный кофе</h3>
                         <p class="catalog__card-text">Ароматный кофе, какао и чай включены в стоимость. Заварите свежую чашку!</p>
-                        <button class="catalog__card-button">Попить</button>
+                        <button class="catalog__card-button" data-gallery-open>Попить</button>
                     </div>
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-party.jpg" alt="Праздники" class="catalog__card-image">
+                    <img src="images/cat-party.jpg" alt="Праздники" class="catalog__card-image" data-gallery="images/cat-party.jpg|images/day-1.jpg|images/hero-bg.jpg" data-title="Праздники" data-desc="Отмечайте дни рождения и вечеринки у нас. Поможем с украшением и организацией.">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">Праздники</h3>
                         <p class="catalog__card-text">Отмечайте дни рождения и вечеринки у нас. Поможем с украшением и организацией.</p>
-                        <button class="catalog__card-button">Отпраздновать</button>
+                        <button class="catalog__card-button" data-gallery-open>Отпраздновать</button>
                     </div>
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-work.jpg" alt="Работа" class="catalog__card-image">
+                    <img src="images/cat-work.jpg" alt="Работа" class="catalog__card-image" data-gallery="images/cat-work.jpg|images/day-4.jpg|images/hero-bg.jpg" data-title="Коворкинг" data-desc="Тихое место для работы и учёбы. Розетки у каждого дивана и быстрый интернет.">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">Коворкинг</h3>
                         <p class="catalog__card-text">Тихое место для работы и учёбы. Розетки у каждого дивана и быстрый интернет.</p>
-                        <button class="catalog__card-button">Работать</button>
+                        <button class="catalog__card-button" data-gallery-open>Работать</button>
                     </div>
                 </article>
             </div>
         </section>
 
+        <!-- FAQ (аккордеон) -->
+        <section class="faq" id="faq">
+            <h2 class="faq__title">Часто задаваемые вопросы</h2>
+            
+            <div class="faq__item">
+                <button class="faq__question">Как происходит оплата?</button>
+                <div class="faq__answer">
+                    <p>Вы платите только за время, проведенное в антикафе. Первые 30 минут бесплатно.</p>
+                </div>
+            </div>
+
+            <div class="faq__item">
+                <button class="faq__question">Нужно ли бронировать место заранее?</button>
+                <div class="faq__answer">
+                    <p>В будние дни можно приходить без брони. На выходные и праздники рекомендуем бронировать зал заранее.</p>
+                </div>
+            </div>
+
+            <div class="faq__item">
+                <button class="faq__question">Можно ли приносить свою еду?</button>
+                <div class="faq__answer">
+                    <p>Да, вы можете приносить свою еду и напитки. Также у нас есть безлимитный кофе и чай.</p>
+                </div>
+            </div>
+        </section>
+
         <section class="contact" id="contact">
             <h2 class="contact__title">Ответьте на несколько вопросов и забронируйте место</h2>
-            <form class="contact__form">
-                <fieldset class="contact__fieldset">
-                    <legend class="contact__legend">Какой у вас повод?</legend>
-                    <div class="contact__input-group">
-                        <label><input type="radio" name="event"> Отдых с друзьями</label>
-                        <label><input type="radio" name="event"> День рождения</label>
-                        <label><input type="radio" name="event"> Работа/Учёба</label>
-                        <label><input type="radio" name="event"> Другое</label>
-                    </div>
-                </fieldset>
-
-                <fieldset class="contact__fieldset">
-                    <legend class="contact__legend">Что вам интересно?</legend>
-                    <div class="contact__input-group">
-                        <label><input type="checkbox"> Игры</label>
-                        <label><input type="checkbox"> Кино</label>
-                        <label><input type="checkbox"> VR</label>
-                    </div>
-                    <div class="contact__input-group">
-                        <label><input type="checkbox"> Просто посидеть</label>
-                        <label><input type="checkbox"> Зал для праздника</label>
-                    </div>
-                </fieldset>
-
-                <fieldset class="contact__fieldset">
-                    <legend class="contact__legend">Когда вас ждать?</legend>
-                    <input type="date" class="contact__input">
-                </fieldset>
-
-                <fieldset class="contact__fieldset">
-                    <legend class="contact__legend">Ваше имя и номер телефона</legend>
-                    <div class="contact__input-group">
-                        <input type="text" placeholder="Ваше имя" class="contact__input">
-                        <input type="tel" placeholder="Номер телефона" class="contact__input">
-                    </div>
-                </fieldset>
-
-                <button type="submit" class="contact__button">Отправить заявку</button>
-            </form>
+            <p class="contact__text">Оставьте заявку, и мы перезвоним вам в течение 10 минут!</p>
+            <button class="contact__button" data-modal-open="form">Зарегистрироваться</button>
         </section>
     </main>
 
@@ -217,5 +218,15 @@
         <div class="footer__copyright">© 2026 Антикафе "КУБ". Все права защищены.</div>
     </footer>
 
+    <div class="modal" id="modal-overlay">
+        <div class="modal__window">
+            <button class="modal__close" id="modal-close">&times;</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <button class="to-top" id="to-top">↑</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
