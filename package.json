@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Nikita6496/Cube/issues"
   },
-  "homepage": "https://github.com/Nikita6496/Cube#readme"
+  "homepage": "https://github.com/Nikita6496/Cube#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
