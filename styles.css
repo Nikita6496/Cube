@@ -41,12 +41,12 @@ body {
     transition: background-color var(--transition), color var(--transition);
 }
 
-/* Шапка (Исправление прыжков) */
+/* Шапка */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap; /* Запрещаем перенос элементов */
+    flex-wrap: nowrap;
     padding: 20px 40px;
     background-color: #000;
     border-bottom: 2px solid var(--accent);
@@ -92,7 +92,7 @@ body.light-theme .header {
     text-decoration: none;
     font-size: 14px;
     text-transform: uppercase;
-    white-space: nowrap; /* Текст не переносится */
+    white-space: nowrap;
     transition: color var(--transition), transform var(--transition);
 }
 
@@ -157,7 +157,6 @@ body.light-theme .theme-toggle--header {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Дополнительная адаптация для экранов 769-1100px, чтобы меню не прыгало */
 @media (max-width: 1100px) and (min-width: 769px) {
     .header {
         padding: 15px 20px;
@@ -175,7 +174,7 @@ body.light-theme .theme-toggle--header {
 
 /* Hero */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
                 url('images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -193,7 +192,19 @@ body.light-theme .theme-toggle--header {
     font-size: 18px;
     color: #e0e0e0;
     max-width: 600px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.hero__note {
+    display: inline-block;
+    margin-bottom: 30px;
+    padding: 10px 18px;
+    font-size: 15px;
+    color: #fff;
+    background: rgba(138, 43, 226, 0.25);
+    border-left: 3px solid var(--accent);
+    border-radius: 5px;
+    max-width: 600px;
 }
 
 .hero__buttons {
@@ -238,6 +249,13 @@ body.light-theme .theme-toggle--header {
 
 .advantages__title, .portfolio__title, .catalog__title, .contact__title {
     font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.catalog__subtitle {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-top: -30px;
     margin-bottom: 40px;
 }
 
@@ -310,6 +328,13 @@ body.light-theme .theme-toggle--header {
     border: 1px solid var(--accent);
     overflow: hidden;
     background-color: var(--bg-card);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature__item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(138,43,226,0.5);
 }
 
 .feature__item img { width: 100%; height: 100%; object-fit: cover; }
@@ -361,7 +386,7 @@ body.light-theme .theme-toggle--header {
     transform: scale(1.05);
 }
 
-/* FAQ (Аккордеон с плавным и быстрым движением) */
+/* FAQ */
 .faq {
     padding: 60px 40px;
     text-align: center;
@@ -396,7 +421,6 @@ body.light-theme .theme-toggle--header {
 
 .faq__question:hover { color: var(--accent); }
 
-/* Закрытие - быстрое (0.25 сек) */
 .faq__answer {
     max-height: 0;
     overflow: hidden;
@@ -406,9 +430,8 @@ body.light-theme .theme-toggle--header {
     color: var(--text-secondary);
 }
 
-/* Открытие - плавное (0.6 сек) */
 .faq__item--active .faq__answer {
-    max-height: 1000px; 
+    max-height: 1000px;
     opacity: 1;
     padding: 10px 0 20px 0;
     transition: max-height 0.6s ease, opacity 0.6s ease, padding 0.6s ease;
@@ -482,6 +505,7 @@ body.light-theme .footer {
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .modal--open {
@@ -493,8 +517,10 @@ body.light-theme .footer {
     border: 2px solid var(--accent);
     border-radius: 10px;
     padding: 40px;
-    max-width: 600px;
-    width: 90%;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
     animation: slideDown 0.3s ease;
 }
@@ -548,6 +574,12 @@ body.light-theme .footer {
     color: var(--text-secondary);
     font-size: 18px;
     line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.modal__content .modal__cta {
+    margin-top: 20px;
+    width: 100%;
 }
 
 .gallery-thumbnails {
@@ -577,12 +609,41 @@ body.light-theme .footer {
     border-color: var(--accent);
 }
 
+/* Форма */
 .form-fieldset { border: none; margin-bottom: 20px; }
 .form-legend { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: var(--text-main); }
-.form-group { display: flex; gap: 15px; margin-bottom: 10px; }
-.form-input { width: 100%; padding: 10px; border: 1px solid var(--accent); border-radius: 5px; background: var(--bg-dark); color: var(--text-main); }
-.form-submit { background-color: var(--accent); color: white; border: none; padding: 15px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; transition: background var(--transition); }
+.form-group { display: flex; gap: 15px; margin-bottom: 10px; flex-wrap: wrap; }
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 15px;
+}
+.form-input:focus { outline: 2px solid var(--accent-light); }
+.form-submit {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background var(--transition);
+}
 .form-submit:hover { background-color: var(--accent-light); }
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+    cursor: pointer;
+    font-size: 15px;
+}
 
 .to-top {
     position: fixed;
@@ -645,7 +706,7 @@ body.light-theme .footer {
         opacity: 1;
         align-items: flex-start;
     }
-    
+
     .header__nav-link {
         text-align: left;
         width: 100%;
@@ -666,13 +727,21 @@ body.light-theme .footer {
     .feature__grid { grid-template-columns: 1fr; width: 100%; }
     .catalog__grid { grid-template-columns: 1fr; }
     .footer { flex-direction: column; gap: 20px; text-align: center; }
-    
+
     .gallery-thumbnails {
         flex-wrap: wrap;
     }
-    
+
     .gallery-thumb {
         width: 60px;
         height: 45px;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    .modal__window {
+        padding: 20px;
     }
 }

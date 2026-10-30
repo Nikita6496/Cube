@@ -12,7 +12,7 @@
         <div class="header__logo">
             <img src="images/logo.jpg" alt="Логотип" class="header__logo-img"> АНТИКАФЕ "КУБ"
         </div>
-        
+
         <nav class="header__nav">
             <a href="#halls" class="header__nav-link">Залы</a>
             <a href="#catalog" class="header__nav-link">Развлечения</a>
@@ -37,9 +37,10 @@
                 <h1 class="hero__title">АНТИКАФЕ "КУБ"</h1>
                 <h2 class="hero__subtitle">Твоё пространство для отдыха и встреч</h2>
                 <p class="hero__description">
-                    Уютные диваны, настольные игры, PlayStation, кофе без ограничений. 
+                    Уютные диваны, настольные игры, PlayStation, кофе без ограничений.
                     Плати только за время, проведённое с пользой.
                 </p>
+                <p class="hero__note">☕ Безлимитный кофе, чай и какао включены в стоимость</p>
                 <div class="hero__buttons">
                     <button class="hero__button hero__button--primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Забронировать визит</button>
                     <button class="hero__button hero__button--outline" onclick="document.getElementById('halls').scrollIntoView({behavior:'smooth'});">Наши залы</button>
@@ -71,9 +72,26 @@
                 <p class="feature__text">Дни рождения, вечеринки, квизы и встречи. У нас есть вместительные залы и аппаратура для презентаций.</p>
                 <button class="feature__button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Выбрать зал</button>
             </div>
-            <div class="feature__grid">
-                <div class="feature__item"><img src="images/hall-1.jpg" alt="Зал 1"></div>
-                <div class="feature__item"><img src="images/hall-2.jpg" alt="Зал 2"></div>
+            <div class="feature__grid" id="halls-grid">
+                <!-- Статичный fallback. При наличии API заменится данными из БД. -->
+                <div class="feature__item"
+                     data-title="Основной зал"
+                     data-desc="Большой зал для вечеринок, квизов и дней рождения. Есть проектор и колонки."
+                     data-img="images/hall-1.jpg"
+                     data-gallery="images/hall-1.jpg|images/hero-bg.jpg|images/day-1.jpg"
+                     data-capacity="30"
+                     data-price="1500">
+                    <img src="images/hall-1.jpg" alt="Основной зал">
+                </div>
+                <div class="feature__item"
+                     data-title="VIP-зал"
+                     data-desc="Уютный зал для небольших встреч и переговоров. Мягкие диваны и приглушённый свет."
+                     data-img="images/hall-2.jpg"
+                     data-gallery="images/hall-2.jpg|images/day-2.jpg|images/hero-bg.jpg"
+                     data-capacity="10"
+                     data-price="2000">
+                    <img src="images/hall-2.jpg" alt="VIP-зал">
+                </div>
             </div>
         </section>
 
@@ -97,8 +115,9 @@
 
         <section class="catalog" id="catalog">
             <h2 class="catalog__title">Наши развлечения</h2>
-            <div class="catalog__grid">
-                
+            <p class="catalog__subtitle">☕ Безлимитный кофе, чай и какао — включены в стоимость визита</p>
+            <div class="catalog__grid" id="catalog-grid">
+                <!-- Статичный fallback. При наличии API заменится данными из БД. -->
                 <article class="catalog__card">
                     <img src="images/cat-ps.jpg" alt="PS5" class="catalog__card-image" data-gallery="images/cat-ps.jpg|images/hero-bg.jpg|images/day-1.jpg" data-title="PlayStation 5" data-desc="Свежие игры, гонки, футбол. Отличное времяпрепровождение вдвоём или с друзьями.">
                     <div class="catalog__card-content">
@@ -145,15 +164,6 @@
                 </article>
 
                 <article class="catalog__card">
-                    <img src="images/cat-coffee.jpg" alt="Кофе" class="catalog__card-image" data-gallery="images/cat-coffee.jpg|images/adv-3.jpg|images/hero-bg.jpg" data-title="Безлимитный кофе" data-desc="Ароматный кофе, какао и чай включены в стоимость. Заварите свежую чашку!">
-                    <div class="catalog__card-content">
-                        <h3 class="catalog__card-title">Безлимитный кофе</h3>
-                        <p class="catalog__card-text">Ароматный кофе, какао и чай включены в стоимость. Заварите свежую чашку!</p>
-                        <button class="catalog__card-button" data-gallery-open>Попить</button>
-                    </div>
-                </article>
-
-                <article class="catalog__card">
                     <img src="images/cat-party.jpg" alt="Праздники" class="catalog__card-image" data-gallery="images/cat-party.jpg|images/day-1.jpg|images/hero-bg.jpg" data-title="Праздники" data-desc="Отмечайте дни рождения и вечеринки у нас. Поможем с украшением и организацией.">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">Праздники</h3>
@@ -176,7 +186,7 @@
         <!-- FAQ -->
         <section class="faq" id="faq">
             <h2 class="faq__title">Часто задаваемые вопросы</h2>
-            
+
             <div class="faq__item">
                 <button class="faq__question">Как происходит оплата?</button>
                 <div class="faq__answer">
@@ -192,9 +202,9 @@
             </div>
 
             <div class="faq__item">
-                <button class="faq__question">Можно ли приносить свою еду?</button>
+                <button class="faq__question">Есть ли у вас напитки?</button>
                 <div class="faq__answer">
-                    <p>Да, вы можете приносить свою еду и напитки. Также у нас есть безлимитный кофе и чай.</p>
+                    <p>Да, безлимитный кофе, чай и какао включены в стоимость визита. Также вы можете приносить свою еду и напитки.</p>
                 </div>
             </div>
         </section>
