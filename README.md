@@ -37,4 +37,4 @@
 
 ## Демо (GitHub Pages)
 https://USERNAME.github.io/Cube/ — ваша статичная версия без БД.
-https://nikita6496.github.io/Cube / — текущая статичная версия без БД.
+https://nikita6496.github.io/Cube/ — текущая статичная версия без БД.
