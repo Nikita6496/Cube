@@ -22,6 +22,7 @@
 3. Создать БД:
    - Открыть phpMyAdmin / MySQL
    - Выполнить SQL из `cube_db.sql`
+   - Заполнить таблицы
 
 4. Настроить подключение:
    - Скопировать `.env.example` → `.env`
@@ -35,4 +36,5 @@
 6. Открыть: http://localhost:3000
 
 ## Демо (GitHub Pages)
-https://USERNAME.github.io/Cube/ — статичная версия без БД.
+https://USERNAME.github.io/Cube/ — ваша статичная версия без БД.
+https://nikita6496.github.io/Cube / — текущая статичная версия без БД.
