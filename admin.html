@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель | Антикафе КУБ</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- ЭКРАН 1: ЛОГИН -->
+    <div id="login-screen" class="login-container">
+        <div class="login-card">
+            <h1>Вход в админ-панель</h1>
+            <p class="login-subtitle">Антикафе "КУБ"</p>
+            <form id="login-form" autocomplete="off">
+                <input type="email" id="login-email" class="form-input" placeholder="Email" autocomplete="off" required>
+                <input type="password" id="login-password" class="form-input" placeholder="Пароль" autocomplete="new-password" required>
+                <button type="submit" class="btn-primary">Войти</button>
+                <p id="login-error" class="error-text"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 2: ПАНЕЛЬ УПРАВЛЕНИЯ -->
+    <div id="dashboard-screen" class="dashboard" style="display: none;">
+        <header class="admin-header">
+            <h2>Панель управления</h2>
+            <div>
+                <span id="admin-name" style="margin-right: 15px;"></span>
+                <button id="logout-btn" class="btn-danger">Выйти</button>
+            </div>
+        </header>
+
+        <nav class="admin-tabs">
+            <button class="tab-btn active" data-tab="bookings">Брони</button>
+            <button class="tab-btn" data-tab="halls">Залы</button>
+            <button class="tab-btn" data-tab="entertainments">Развлечения</button>
+            <!-- Вкладка "Админы" будет скрыта для менеджеров через JS -->
+            <button class="tab-btn" data-tab="users" id="tab-btn-users">Админы</button>
+        </nav>
+
+        <main class="admin-content">
+            <!-- Вкладка: Брони -->
+            <section id="tab-bookings" class="tab-content active">
+                <h3>Заявки на бронирование</h3>
+                <table class="admin-table" id="bookings-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th><th>Клиент</th><th>Телефон</th><th>Зал</th>
+                            <th>Дата</th><th>Время</th><th>Гостей</th><th>Повод</th><th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <!-- Вкладка: Залы -->
+            <section id="tab-halls" class="tab-content">
+                <h3>Управление залами</h3>
+                <form id="add-hall-form" class="admin-form">
+                    <input type="text" name="name" class="form-input" placeholder="Название зала" required>
+                    <input type="number" name="capacity" class="form-input" placeholder="Вместимость (чел.)" required>
+                    <input type="number" name="price_per_hour" class="form-input" placeholder="Цена за час (₽)" required>
+                    <input type="text" name="image_url" class="form-input" placeholder="URL картинки (images/hall-1.jpg)">
+                    <input type="text" name="description" class="form-input" placeholder="Описание">
+                    <button type="submit" class="btn-primary">Добавить зал</button>
+                </form>
+                <table class="admin-table" id="halls-table">
+                    <thead>
+                        <tr><th>ID</th><th>Название</th><th>Вместимость</th><th>Цена/час</th><th>Действие</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <!-- Вкладка: Развлечения -->
+            <section id="tab-entertainments" class="tab-content">
+                <h3>Управление развлечениями</h3>
+                <form id="add-ent-form" class="admin-form">
+                    <input type="text" name="name" class="form-input" placeholder="Название" required>
+                    <input type="text" name="slug" class="form-input" placeholder="Slug (playstation-5)" required>
+                    <input type="text" name="category" class="form-input" placeholder="Категория (vr, board)" required>
+                    <input type="number" name="price" class="form-input" placeholder="Цена (₽)">
+                    <input type="text" name="image_url" class="form-input" placeholder="URL картинки (images/cat-ps.jpg)">
+                    <input type="text" name="description" class="form-input" placeholder="Описание">
+                    <button type="submit" class="btn-primary">Добавить развлечение</button>
+                </form>
+                <table class="admin-table" id="ent-table">
+                    <thead>
+                        <tr><th>ID</th><th>Название</th><th>Категория</th><th>Цена</th><th>Действие</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <!-- Вкладка: Пользователи (Только для админа) -->
+            <section id="tab-users" class="tab-content">
+                <h3>Управление администраторами</h3>
+                <form id="add-user-form" class="admin-form">
+                    <input type="text" name="name" class="form-input" placeholder="Имя" required>
+                    <input type="email" name="email" class="form-input" placeholder="Email" required>
+                    <input type="password" name="password" class="form-input" placeholder="Пароль" required>
+                    <!-- ДОБАВЛЕН выбор роли -->
+                    <select name="role" class="form-input">
+                        <option value="manager">Менеджер</option>
+                        <option value="admin">Администратор</option>
+                    </select>
+                    <button type="submit" class="btn-primary">Добавить пользователя</button>
+                </form>
+                <table class="admin-table" id="users-table">
+                    <thead>
+                        <tr><th>ID</th><th>Имя</th><th>Email</th><th>Роль</th><th>Действие</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

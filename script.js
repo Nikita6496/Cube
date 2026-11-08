@@ -179,6 +179,11 @@ async function loadEntertainments() {
             const main = imgs[0];
             const gallery = imgs.join('|');
             const desc = (item.description || '').replace(/"/g, '&quot;');
+            
+            // Формируем красивую цену
+            const priceHTML = item.price > 0 
+                ? `<div class="catalog__card-price">${item.price} ₽</div>` 
+                : `<div class="catalog__card-price">Включено</div>`;
 
             return `
                 <article class="catalog__card">
@@ -188,6 +193,7 @@ async function loadEntertainments() {
                          data-desc="${desc}">
                     <div class="catalog__card-content">
                         <h3 class="catalog__card-title">${item.name}</h3>
+                        ${priceHTML} <!-- Вставляем цену -->
                         <p class="catalog__card-text">${item.description || ''}</p>
                         <button class="catalog__card-button" data-gallery-open>Подробнее</button>
                     </div>

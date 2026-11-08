@@ -744,4 +744,17 @@ body.light-theme .footer {
     .modal__window {
         padding: 20px;
     }
+
+    /* Стили для цены в карточке развлечения */
+    .catalog__card-price {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        color: var(--accent-light); /* Фиолетовый цвет */
+        margin-bottom: 15px;
+        background: rgba(138, 43, 226, 0.1);
+        padding: 5px 12px;
+        border-radius: 20px;
+        border: 1px solid var(--accent);
+    }
 }
